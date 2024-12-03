@@ -1,18 +1,22 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
-    <img alt="Vue logo" src="../../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../../assets/logo.png" @click="handleClick">
+    <HelloWorld :msg="msg"/>
   </div>
 </template>
 
-<script>
+<script setup>
 import HelloWorld from '@/components/HelloWorld.vue'
+import { ref } from 'vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+const msg = ref('Welcome to Your Vue.js App')
+const handleClick = () => {
+  if (msg.value === 'Welcome to Your Vue.js App') {
+    msg.value = 'You clicked the logo!'
+    return
   }
+  msg.value = 'Welcome to Your Vue.js App!'
 }
 </script>
 
